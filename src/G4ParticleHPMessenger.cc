@@ -141,23 +141,23 @@ void G4ParticleHPMessenger::SetNewValue(G4UIcommand* command,G4String newValue)
    //Added for G4CASCADE
    if ( command == CASCADECmd ) { 
       if(bValue == 1){
-        putenv("G4NEUTRONHP_USE_CASCADE=1");
+        setenv("G4NEUTRONHP_USE_CASCADE", "1", 1);
       }else {
-        putenv("G4NEUTRONHP_USE_CASCADE=0");
+        setenv("G4NEUTRONHP_USE_CASCADE", "0", 1);
       }
    }
    if( command == UseRawExcitationCmd ) { 
       if(bValue == 1){
-        putenv("G4NEUTRONHP_USE_RAW_EXCITATION=1");
+        setenv("G4NEUTRONHP_USE_RAW_EXCITATION", "1", 1);
       }else {
-        putenv("G4NEUTRONHP_USE_RAW_EXCITATION=0");
+        setenv("G4NEUTRONHP_USE_RAW_EXCITATION", "0", 1);
       }
    }
    if( command == DoUnplacedCmd ) { 
       if(bValue == 1){
-        putenv("G4NEUTRONHP_DO_UNPLACED=1");
+        setenv("G4NEUTRONHP_DO_UNPLACED", "1", 1);
       }else {
-        putenv("G4NEUTRONHP_DO_UNPLACED=0");
+        setenv("G4NEUTRONHP_DO_UNPLACED", "0", 1);
       }
    }
 
