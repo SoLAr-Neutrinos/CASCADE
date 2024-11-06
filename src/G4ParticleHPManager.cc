@@ -162,7 +162,7 @@ void G4ParticleHPManager::CloseReactionWhiteBoard()
    G4ParticleHPThreadLocalManager::GetInstance()->CloseReactionWhiteBoard();
 }
 
-void G4ParticleHPManager::GetDataStream( G4String filename , std::istringstream& iss ) 
+void G4ParticleHPManager::GetDataStream( const G4String& filename , std::istringstream& iss ) 
 {
    G4String* data=0;
    G4String compfilename(filename);
@@ -239,7 +239,7 @@ void G4ParticleHPManager::GetDataStream( G4String filename , std::istringstream&
    delete data;
 }
 
-void G4ParticleHPManager::GetDataStream2( G4String filename , std::istringstream& iss ) 
+void G4ParticleHPManager::GetDataStream2( const G4String& filename , std::istringstream& iss ) 
 {
    // Checking existance of data file 
 
@@ -276,7 +276,7 @@ void G4ParticleHPManager::SetVerboseLevel( G4int newValue )
    verboseLevel = newValue;
 }
 
-void G4ParticleHPManager::register_data_file(G4String filename, G4String source)
+void G4ParticleHPManager::register_data_file(const G4String& filename, const G4String& source)
 {
    mDataEvaluation.insert( std::pair < G4String , G4String > ( filename , source ) );
 }
@@ -291,32 +291,6 @@ void G4ParticleHPManager::DumpDataSource()
       G4cout << it->first << " " << it->second << G4endl;
    }
    G4cout << G4endl;
-}
-
-G4PhysicsTable* G4ParticleHPManager::GetInelasticCrossSections(const G4ParticleDefinition* particle )
-{
-   if ( theInelasticCrossSections.end() !=  theInelasticCrossSections.find( particle ) )
-      return theInelasticCrossSections.find( particle )->second; 
-   else 
-      return 0; 
-}
-
-void G4ParticleHPManager::RegisterInelasticCrossSections( const G4ParticleDefinition* particle, G4PhysicsTable* val )
-{
-   theInelasticCrossSections.insert( std::pair<const G4ParticleDefinition* , G4PhysicsTable* >( particle , val ) ); 
-}
-
-std::vector<G4ParticleHPChannelList*>* G4ParticleHPManager::GetInelasticFinalStates(const G4ParticleDefinition* particle)
-{
-   if ( theInelasticFSs.end() != theInelasticFSs.find( particle ) )
-      return theInelasticFSs.find( particle )->second;
-   else 
-      return 0;
-}
-
-void G4ParticleHPManager::RegisterInelasticFinalStates( const G4ParticleDefinition* particle , std::vector<G4ParticleHPChannelList*>* val )
-{
-   theInelasticFSs.insert ( std::pair<const G4ParticleDefinition*,std::vector<G4ParticleHPChannelList*>*>( particle , val ) ); 
 }
 
 //UseCASCADE, UseRawExcitation, and doUnplaced were added for G4CASCADE
