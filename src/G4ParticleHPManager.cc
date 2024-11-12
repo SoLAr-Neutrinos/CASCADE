@@ -324,11 +324,29 @@ void G4ParticleHPManager::DumpSetting() {
   G4cout << G4endl
          << "=======================================================" << G4endl
          << "======       ParticleHP Physics Parameters     ========" << G4endl
-         << "=======================================================" << G4endl
-         << " UseCASCADE ?              " << std::getenv("G4NEUTRONHP_USE_CASCADE") << G4endl
-         << " UseRawExcitation ?        " << std::getenv("G4NEUTRONHP_USE_RAW_EXCITATION") << G4endl
-         << " DoUnplaced ?              " << std::getenv("G4NEUTRONHP_DO_UNPLACED") << G4endl
-         << " UseOnlyPhotoEvaporation ? " << USE_ONLY_PHOTONEVAPORATION << G4endl
+         << "=======================================================" << G4endl;
+  if (std::getenv("G4NEUTRONHP_USE_CASCADE")) {
+    G4cout << " UseCASCADE ?              " << std::getenv("G4NEUTRONHP_USE_CASCADE") << G4endl;
+  }
+  else {
+    G4cout << " UseCASCADE ?              " << "NO" << G4endl;
+  }
+
+  if (std::getenv("G4NEUTRONHP_USE_RAW_EXCITATION")) {
+         G4cout << " UseRawExcitation ?        " << std::getenv("G4NEUTRONHP_USE_RAW_EXCITATION") << G4endl;
+  }
+  else {
+    G4cout << " UseRawExcitation ?        " << "NO" << G4endl;
+  }
+
+  if (std::getenv("G4NEUTRONHP_DO_UNPLACED")) {
+    G4cout << " DoUnplaced ?              " << std::getenv("G4NEUTRONHP_DO_UNPLACED") << G4endl;
+  }
+  else {
+    G4cout << " DoUnplaced ?              " << "NO" << G4endl;
+  }
+
+  G4cout << " UseOnlyPhotoEvaporation ? " << USE_ONLY_PHOTONEVAPORATION << G4endl
          << " SkipMissingIsotopes ?     " << SKIP_MISSING_ISOTOPES << G4endl
          << " NeglectDoppler ?          " << NEGLECT_DOPPLER << G4endl
          << " DoNotAdjustFinalState ?   " << DO_NOT_ADJUST_FINAL_STATE << G4endl
